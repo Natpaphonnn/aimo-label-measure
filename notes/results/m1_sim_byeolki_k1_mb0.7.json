@@ -1,0 +1,148 @@
+{
+ "n": 105,
+ "n_problems": 53,
+ "prior_rate": 0.7333333333333333,
+ "baseline_prior_acc": 0.7333333333333333,
+ "baseline_prior_insample_acc": 0.7333333333333333,
+ "within_model_features": {
+  "acc": 0.721,
+  "acc_sd_seeds": 0.018,
+  "per_model": {
+   "Qwen/Qwen3.5-4B": {
+    "n": 44,
+    "acc_mean_seeds": 0.727,
+    "prior_insample_acc": 0.727
+   },
+   "Skywork/Skywork-OR1-Math-7B": {
+    "n": 43,
+    "acc_mean_seeds": 0.767,
+    "prior_insample_acc": 0.767
+   },
+   "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": {
+    "n": 18,
+    "acc_mean_seeds": 0.593,
+    "prior_insample_acc": 0.667
+   }
+  },
+  "vs_prior": {
+   "delta": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "wins_losses": [
+    0,
+    0
+   ],
+   "p": 1.0,
+   "mde80": NaN
+  },
+  "vs_prior_insample": {
+   "delta": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "wins_losses": [
+    0,
+    0
+   ],
+   "p": 1.0,
+   "mde80": NaN
+  }
+ },
+ "pooled_features": {
+  "acc": 0.727,
+  "acc_sd_seeds": 0.004,
+  "per_model": {
+   "Qwen/Qwen3.5-4B": {
+    "n": 44,
+    "acc_mean_seeds": 0.727,
+    "prior_insample_acc": 0.727
+   },
+   "Skywork/Skywork-OR1-Math-7B": {
+    "n": 43,
+    "acc_mean_seeds": 0.767,
+    "prior_insample_acc": 0.767
+   },
+   "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": {
+    "n": 18,
+    "acc_mean_seeds": 0.63,
+    "prior_insample_acc": 0.667
+   }
+  },
+  "vs_prior": {
+   "delta": -0.01,
+   "ci95": [
+    -0.029,
+    0.0
+   ],
+   "wins_losses": [
+    0,
+    1
+   ],
+   "p": 1.0,
+   "mde80": NaN
+  },
+  "vs_prior_insample": {
+   "delta": -0.01,
+   "ci95": [
+    -0.029,
+    0.0
+   ],
+   "wins_losses": [
+    0,
+    1
+   ],
+   "p": 1.0,
+   "mde80": NaN
+  }
+ },
+ "solve_rate_only_within": {
+  "acc": 0.727,
+  "acc_sd_seeds": 0.004,
+  "per_model": {
+   "Qwen/Qwen3.5-4B": {
+    "n": 44,
+    "acc_mean_seeds": 0.727,
+    "prior_insample_acc": 0.727
+   },
+   "Skywork/Skywork-OR1-Math-7B": {
+    "n": 43,
+    "acc_mean_seeds": 0.767,
+    "prior_insample_acc": 0.767
+   },
+   "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": {
+    "n": 18,
+    "acc_mean_seeds": 0.63,
+    "prior_insample_acc": 0.667
+   }
+  },
+  "vs_prior": {
+   "delta": -0.01,
+   "ci95": [
+    -0.029,
+    0.0
+   ],
+   "wins_losses": [
+    0,
+    1
+   ],
+   "p": 1.0,
+   "mde80": NaN
+  },
+  "vs_prior_insample": {
+   "delta": -0.01,
+   "ci95": [
+    -0.029,
+    0.0
+   ],
+   "wins_losses": [
+    0,
+    1
+   ],
+   "p": 1.0,
+   "mde80": NaN
+  }
+ }
+}

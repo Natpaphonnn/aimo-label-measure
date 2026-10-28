@@ -1,0 +1,143 @@
+{
+ "tag": "v1all3",
+ "models": {
+  "Qwen/Qwen3.5-4B": {
+   "n_gold": 962,
+   "share_correct": 0.40644490644490644,
+   "blocks": {
+    "S:trace:0": 0.8701474955321351,
+    "S:answer:0": 0.6750753602286114,
+    "S:trace:1": 0.8966411509399314,
+    "S:answer:1": 0.696933185822871,
+    "S:trace:2": 0.8771437913473468,
+    "S:answer:2": 0.7285867213709515
+   },
+   "auc_probe_selected": 0.8969188528224814,
+   "auc_twin8": 0.8748460322223764,
+   "within_probe": 0.6761363636363636,
+   "within_twin": 0.7684659090909091,
+   "between_rho_probe": 0.8025337714911348,
+   "between_rho_twin": 0.5792319766771655,
+   "share_finished": 0.02598752598752599,
+   "auc_finished_only_feature": 0.5319693094629157,
+   "auc_probe_in_capped": 0.8898921458853704,
+   "auc_probe_in_finished": null,
+   "acc_correct_capped": 0.39060832443970117,
+   "acc_correct_finished": 1.0,
+   "transfer_amc_to_tt": 0.856344716809833,
+   "transfer_tt_to_amc": 0.8500194099378882,
+   "transfer_block": "S:trace:1"
+  },
+  "Skywork/Skywork-OR1-Math-7B": {
+   "n_gold": 584,
+   "share_correct": 0.20205479452054795,
+   "blocks": {
+    "S:trace:0": 0.8673165054193642,
+    "S:answer:0": 0.7434531170437187,
+    "S:trace:1": 0.9098894304211828,
+    "S:answer:1": 0.783443660435004,
+    "S:trace:2": 0.8665890739797776,
+    "S:answer:2": 0.7927911544336946
+   },
+   "auc_probe_selected": 0.8975958390921656,
+   "auc_twin8": 0.9520804539172182,
+   "within_probe": 0.7818181818181819,
+   "within_twin": 0.8090909090909091,
+   "between_rho_probe": 0.6731204669145024,
+   "between_rho_twin": 0.613382270786152,
+   "share_finished": 0.05650684931506849,
+   "auc_finished_only_feature": 0.6398305084745762,
+   "auc_probe_in_capped": 0.8580913910628629,
+   "auc_probe_in_finished": null,
+   "acc_correct_capped": 0.1542649727767695,
+   "acc_correct_finished": 1.0,
+   "transfer_amc_to_tt": null,
+   "transfer_tt_to_amc": null,
+   "transfer_block": "S:trace:1"
+  },
+  "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": {
+   "n_gold": 584,
+   "share_correct": 0.125,
+   "blocks": {
+    "S:trace:0": 0.7478755059914752,
+    "S:answer:0": 0.6030078009811544,
+    "S:trace:1": 0.787148486716886,
+    "S:answer:1": 0.6356593303487654,
+    "S:trace:2": 0.767123287671233,
+    "S:answer:2": 0.6674530198643541
+   },
+   "auc_probe_selected": 0.7250355199313728,
+   "auc_twin8": 0.6900785459614508,
+   "within_probe": 0.5619834710743802,
+   "within_twin": 0.7024793388429752,
+   "between_rho_probe": 0.3497928013024017,
+   "between_rho_twin": 0.03398796778133001,
+   "share_finished": 0.011986301369863013,
+   "auc_finished_only_feature": 0.547945205479452,
+   "auc_probe_in_capped": 0.741416118128447,
+   "auc_probe_in_finished": null,
+   "acc_correct_capped": 0.11438474870017332,
+   "acc_correct_finished": 1.0,
+   "transfer_amc_to_tt": null,
+   "transfer_tt_to_amc": null,
+   "transfer_block": "S:trace:1"
+  }
+ },
+ "label_decomposition": {
+  "n_cases": 80,
+  "per_model_n": {
+   "Skywork/Skywork-OR1-Math-7B": 41,
+   "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": 24,
+   "Qwen/Qwen3.5-4B": 15
+  },
+  "rows": {
+   "solve_cut": {
+    "per_model_auc": {
+     "Qwen/Qwen3.5-4B": 0.8846153846153846,
+     "Skywork/Skywork-OR1-Math-7B": 0.5681818181818181,
+     "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": 0.8061224489795917
+    },
+    "pooled_auc": 0.6901315789473684,
+    "n": 58,
+    "cv_acc": 0.6321839080459771,
+    "prior": 0.6551724137931034
+   },
+   "probe_mean": {
+    "per_model_auc": {
+     "Qwen/Qwen3.5-4B": 0.8461538461538461,
+     "Skywork/Skywork-OR1-Math-7B": 0.5608465608465608,
+     "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": 0.5785714285714286
+    },
+    "pooled_auc": 0.6331908831908831,
+    "n": 80,
+    "cv_acc": 0.6625,
+    "prior": 0.675
+   },
+   "twin_mean": {
+    "per_model_auc": {
+     "Qwen/Qwen3.5-4B": 0.8269230769230769,
+     "Skywork/Skywork-OR1-Math-7B": 0.5661375661375662,
+     "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": 0.6642857142857144
+    },
+    "pooled_auc": 0.6289173789173789,
+    "n": 80,
+    "cv_acc": 0.6458333333333334,
+    "prior": 0.675
+   },
+   "base": {
+    "per_model_auc": {
+     "Qwen/Qwen3.5-4B": 0.6923076923076923,
+     "Skywork/Skywork-OR1-Math-7B": 0.44696969696969696,
+     "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": 0.6836734693877551
+    },
+    "pooled_auc": 0.5901315789473685,
+    "n": 58,
+    "cv_acc": 0.5919540229885057,
+    "prior": 0.6551724137931034
+   }
+  },
+  "rho_solve_cut_vs_base": 0.7380282819574051,
+  "mean_solve_cut": 0.5495689655172413,
+  "mean_base": 0.8793103448275862
+ }
+}

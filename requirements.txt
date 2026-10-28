@@ -1,0 +1,15 @@
+# Python 3.12. Analysis, figures and tests (CPU):
+numpy==2.5.4
+pandas==3.0.3
+scipy==1.18.1
+scikit-learn==1.8.0
+joblib==1.5.3
+matplotlib==3.11.2
+pyarrow==26.0.0
+huggingface-hub==1.22.0
+# sampling, residual-state hooks and the submitted bundles (tests/test_hooks.py uses a tiny model):
+torch==2.12.1
+transformers==5.13.0
+safetensors==0.8.0
+tokenizers==0.22.2
+accelerate==1.13.0

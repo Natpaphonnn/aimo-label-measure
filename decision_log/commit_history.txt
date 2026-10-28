@@ -1,0 +1,33 @@
+e65c4bc 2026-10-27 02:13 UTC White-box ablation with 10^4-resample paired cluster bootstrap per seed: wb-prior +11.9 (all CIs > 0), wb-offsets +7.0 (n.s., post hoc); report uses seed means consistently (+11.9/+15.7/-3.8), appendix table, main text 5 pages
+6a41670 2026-10-27 01:25 UTC Self-review: offsets-only baseline (probe +7.0, n.s., post hoc #54) reported; claim/number consistency fixes; AI usage statement split; main text still 5 pages
+97b7bbc 2026-10-26 15:26 UTC FACTS D23: Codabench queue back; organizers confirm white-box ranked on its own for the award (#52 stands)
+78d52b9 2026-10-26 03:50 UTC Val logs: wb/bb/hybrid identical on Main (21/21), 1 Small case differs; remove wrong val-ablation claim; wb vs bb 'comparable' with MDE; wb-no-probe ablation bundle (#53)
+4b94ba6 2026-10-26 00:56 UTC LOG: replacement-UI upload plan (8 zips, 4 rounds) incl. prior-only re-submission for valid nomination IDs
+54a22b4 2026-10-26 00:41 UTC Freeze nomination (#52, the author): wb-K4 + constant-robust prior per track, bb-K4 third if 3 slots; recorded before any candidate board score
+534758c 2026-10-25 16:59 UTC Break-even robust share: wb-K4 beats always-robust below pi = 0.59, bb-K4 below 0.63; test mix evidence conflicts (val ~0.5, train 0.74), recorded for the author's choice
+e5c963a 2026-10-25 16:46 UTC Seed robustness: wb-K4 beats the prior on balanced accuracy for all three stage-1 seeds (+0.092..+0.118, CIs above 0); at K = 1 the probe gives 0.58-0.63 vs agreement 0.55
+bcd9127 2026-10-25 15:26 UTC #51: on v3 balanced accuracy, wb-K4 beats the prior by +10.6 (CI excludes 0) and bb-K4 by +13.7; recommended nominations wb-K4 + bb-K4 (balanced), pending the author
+82610ac 2026-10-25 14:37 UTC Label-shift analysis (#50): balanced stage 2 + balanced accuracy; agreement beats the prior by +12 points (CI excludes 0) at K4/K8, white-box adds nothing beyond it; the earlier wb > bb at K4 was a thresholding artefact
+ed8168d 2026-10-25 14:17 UTC FACTS D22: website re-read (prizes, automatic White-Box consideration with a substantial-effect ablation, Writeup $4,000 and its stated interests, 5-page limit excludes limitations/AI statement); #49 addendum
+1cd28f2 2026-10-25 14:13 UTC DECISIONS #49 proposal: no arm passes CV >= prior; prior + best white-box arm as the two nominations (pending the author, freeze by Oct 27)
+6b330e0 2026-10-23 15:16 UTC Report on OpenReview, due Nov 5 AoE (not Nov 15), reviews by Nov 12, reciprocal reviewing (FACTS D19, DECISIONS #48); challenge bibtex
+c8af161 2026-10-23 06:04 UTC FACTS D15-D18 (Discord Oct 21-23: val exploits disqualified, rewards for methods that learn from 10s of examples, Codabench outage, 2 nominations, no test-distribution guarantee); DECISIONS #47
+ff84759 2026-10-22 07:49 UTC DECISIONS #46: draft nomination rule (5 distinct candidates per track, white-box variants, gates; first uploads by Oct 29)
+3f79e2f 2026-10-22 07:44 UTC Label-noise simulation: majority column + train-main-v2 convention; correct the overstated 'solve rate recovers most' reading (DECISIONS #45); consistency target added to the plan
+ecd1c02 2026-10-22 04:49 UTC DECISIONS #44: White-Box needs a substantial ablation effect (site 2026-10-21); two-stage white-box solve-rate estimator; pipeline canary
+cbd13ef 2026-10-17 18:07 UTC DECISIONS #43 + status notes: Qwen originals complete, forcing venue, quota-gated states kernel
+7ef128e 2026-10-17 13:52 UTC Canary v2 results: no persistent state between cases -> static 110 s allotment default; canary v3 probes locations/env; per-model K/cut from server decode curves; runtime_estimate v5
+38761c8 2026-10-17 10:05 UTC vLLM 0.10.2 works on T4 (301/265 tok/s): __main__ guard for spawned TP workers, Skywork/DeepSeek kernels rendered, notes (FACTS D13, DECISIONS #41, Kaggle log)
+559d338 2026-10-17 09:42 UTC Kaggle states+cuts kernel (kernel sources mount gen outputs), torch port of force_at_cuts, packager pushes via pipx kaggle
+96ac7ec 2026-10-17 09:39 UTC hybrid-v1 bundle (K samples + residual-stream hooks, three arms by artifact), artifact fitter with selftest, MPS loading for local tests
+52f0c40 2026-10-17 09:29 UTC Kaggle v3: forced answers one prefix at a time, records survive forcing failures; vLLM smoke pins transformers<5
+bb8fb5b 2026-10-17 05:50 UTC Self-labelling on Kaggle: per-GPU HF workers with token ids, sample-range shards, pinned-vLLM smoke; Mac takes samples 8-11
+634dec7 2026-10-17 05:38 UTC Night-2 recipe: keep the 8k label budget (forced answers at 4k halve Qwen's solve rate); trace_states works on Qwen3.5
+8d9664e 2026-10-17 05:24 UTC White-Box Awards: pre-registered hybrid (agreement + in-trace residual probe) and ablation; night-1 outcome
+888ac1b 2026-10-16 16:09 UTC Global time keeper: JobClock shares one budget per unique problem across fresh case processes
+d596e2f 2026-10-16 07:21 UTC Timing canary 991764 results: fresh process per case, measured decode rates; canary v2 for long context
+1806c5b 2026-10-16 02:53 UTC Per-case protocol and organizer answers (Oct 16): CaseClock, emulator, timing canary; M1 re-evaluated
+645693a 2026-10-16 01:33 UTC Prior-only uploads logged (Main 0.48 = 10/21, Small 0.50); correct Main constant-True fact; new ingestion program noted; contract regression test
+5e1e131 2026-10-16 01:24 UTC MDE at 80% power for paired tests; N1/N2 rephrased with detectable bounds; M1 milestone recorded
+f66031e 2026-10-15 16:19 UTC P1: label-noise ceiling simulation, leakage-filtered problem pool, byeolki reuse inventory, answer parser, MLX harness, grant draft
+4ed72d7 2026-10-15 16:00 UTC P0 notes (verified facts, decisions, status notes) and prior-only submission

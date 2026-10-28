@@ -1,0 +1,11 @@
+{
+ "Qwen/Qwen3.5-4B|default": 0.6666666666666666,
+ "Skywork/Skywork-OR1-Math-7B|default": 0.75,
+ "allenai/Olmo-3-7B-Think|default": 0.7777777777777778,
+ "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B|default": 0.7,
+ "openai/gpt-oss-120b|high": 0.8666666666666667,
+ "openai/gpt-oss-120b|low": 0.7142857142857143,
+ "openai/gpt-oss-120b|medium": 0.6666666666666666,
+ "__global__": 0.7375,
+ "__source__": "train-main-v2@fa8af758 n=80"
+}
