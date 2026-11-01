@@ -44,10 +44,11 @@ The validation-server logs can be pointed to with `AIMO_VAL_LOGS=<dir>`.
 
 ## Other contents
 
-- `bundles/`: the exact ZIPs submitted to Codabench: wb-K4 Main 1011261 / Small 1009859, always-robust Main 991595 / Small 991597.
+- `bundles/`: the exact ZIPs submitted to Codabench: wb-K4 Main 1011261 / Small 1009859 (the two nominated
+  for final evaluation, two in total per organizers), always-robust Main 991595 / Small 991597 (baseline, not nominated).
   `tools/build_twostage_bundle.py` builds them; `submissions/hybrid-v1/` is their source.
 - `decision_log/DECISIONS.md`: the dated decision log the report cites (arms, comparisons and the nomination rule, #46-#53;
-  post-hoc check #54); `decision_log/commit_history.txt`: every commit that touched it (hash, time in UTC, subject). The hashes
+  post-hoc check #54; final nomination #55); `decision_log/commit_history.txt`: every commit that touched it (hash, time in UTC, subject). The hashes
   can be checked against the public repository after review.
 - Anonymization: user names, home paths and Kaggle kernel slugs are replaced by placeholders (`<kaggle-user>`, `kx-*`).
 

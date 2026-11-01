@@ -401,3 +401,10 @@ includes 0, p 0.14-0.24); bb - prior mean +15.7; wb - bb mean -3.8 (n.s.). The r
 accuracies (0.619/0.657) with last-seed deltas (+10.6/+13.7/-3.0); it now reports seed means (+11.9/+15.7/-3.8) with per-seed
 CIs (Appendix table). The held-out effect vs the fair baseline does NOT exclude 0, so it is not made the primary claim; the
 pre-registered wb -> prior ablation stays primary, the offsets comparison is reported as post hoc. Nominations unchanged.
+
+### 55. Final nomination: two in total (the author, 2026-11-01)
+Organizers in Discord #qa (Michal Stefanik, 2026-11-01 08:52): "We ask for two in total" (two IDs across both tracks), and the
+report states which ones are nominated. the author nominates wb-K4 in both tracks: **Main 1011261, Small 1009859**. The always-robust
+prior (Main 991595, Small 991597) stays in the report as a baseline, not nominated. #52 (two per track) was recorded before any
+board score; this narrowing was made after the official validation scores were known (wb 0.524/0.571 vs prior 0.476/0.500), and
+the report says so by listing both. 1011261 remains the Main mirror whatever 1009697 scores (#52 pre-commitment).
