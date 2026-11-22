@@ -1,4 +1,5 @@
-868ffe7 2026-11-22 13:47 UTC Pre-register revision analyses for #21 (nested stage 1, solvability control, band rules, simulation sensitivity, precision parity)
+37039c2 2026-11-22 18:42 UTC Revision of #21 (conditional accept): nested stage 1, solvability control, band rules, simulation sensitivity, precision parity, regeneration appendix and cache, revision note
+0350aac 2026-11-22 18:42 UTC Pre-register revision analyses for #21 (nested stage 1, solvability control, band rules, simulation sensitivity, precision parity)
 8aeb09c 2026-11-01 07:01 UTC log Nov 1: two-in-total nomination, OpenReview edit, organizer manual check
 e60693a 2026-11-01 06:05 UTC nominate 2 IDs total (wb-K4 Main+Small) per organizer #qa 2026-11-01
 e65c4bc 2026-10-27 02:13 UTC White-box ablation with 10^4-resample paired cluster bootstrap per seed: wb-prior +11.9 (all CIs > 0), wb-offsets +7.0 (n.s., post hoc); report uses seed means consistently (+11.9/+15.7/-3.8), appendix table, main text 5 pages

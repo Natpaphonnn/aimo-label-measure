@@ -415,3 +415,12 @@ use a DM or e-mail to the organizers.
 ### 56. Revision analyses pre-registered (2026-11-22, before running): notes/PREREG_REVISION_2026-11-22.md
 Conditional accept of #21 (notes/REVIEWS_SUB21_2026-11-21.md). Nested stage 1 inside outer stage-2 folds (P1), probe vs base
 solvability (P2), two-sided solve-rate rules and official labels (P3), simulation sensitivity (P4), bf16/fp16 parity (P5).
+
+### 57. Revision results applied by the pre-registered rules (2026-11-23)
+P1 nested: wb - offsets at K=4 balanced +7.4 (every seed's CI includes 0) is the headline; wb - bb -3.4 in the abstract.
+P2: within-stratum AUC 0.55 [0.30, 0.73], adding the probe to the solve rate -3.8 (n.s.) -> claim reduced to "stage 1 estimates
+base solvability". P3: best monotone AUC 0.651, best two-sided balanced accuracy 0.627 -> "close to chance" removed; label analysis
+restricted to byeolki-protocol labels (official cases reported separately, n = 34). Deviation: the two-threshold / [x, x^2] rules
+were run for solve rate, wb and agreement, not for the labellers' base accuracy (it is >= 0.5 on every labelled case, so band =
+monotone there). Revised PDF carries line numbers for the revision note (\linesfalse for the 20 Dec camera-ready). Paper links
+github.com/<github-user>/aimo-label-measure (to be published by the author from branch anon-review); organizer statements of #qa 22 Nov cited.

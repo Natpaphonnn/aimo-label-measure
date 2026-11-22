@@ -43,6 +43,12 @@ prefixes of the problem text.
 
 The analyses were pre-registered before they were run: `decision_log/PREREG_REVISION_2026-11-22.md`.
 
+### Timestamp of the pre-registration
+
+The pre-registration was committed (private repository, commit `868ffe7`, 2026-11-22 13:47 UTC) before the first revision run
+(13:48 UTC). Re-authoring that unpushed commit with the GitHub no-reply e-mail reset its date: GitHub shows it as `0350aac`,
+2026-11-22 18:42 UTC, with an identical tree. Details: `decision_log/PREREG_TIMESTAMP_NOTE.md`.
+
 ## What needs the logged generations (not shipped)
 
 These scripts read `runs/` (sampled solutions and residual states, several GB, produced on free Kaggle T4s and a laptop with
