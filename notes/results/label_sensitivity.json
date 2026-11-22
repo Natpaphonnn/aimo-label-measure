@@ -1,0 +1,175 @@
+{
+ "assumptions": "  A1 each prompt's accuracy is a mean of K independent Bernoulli samples (K = 10 in the challenge);\n  A2 perturbation families degrade independently given the case;\n  A3 family t truly degrades with probability scale x (share of sample-full rows with an observed drop >= 0.25), scale 0.5;\n  A4 a true drop is U(0.3, 1.0);\n  A5 base accuracies follow the empirical sample-full distribution (base > 0);\n  A6 sample-full = 10 problems x 8 settings of OTHER models than the challenge's five.",
+ "share_observed": {
+  "expert_no_solution": 0.327,
+  "rephrase": 0.122,
+  "expert_perturbations": 0.122,
+  "domain": 0.111,
+  "typos": 0.089,
+  "rename": 0.078,
+  "distract": 0.044
+ },
+ "bootstrap_5_95": {
+  "oracle": [
+   0.8246787564396237,
+   0.9322521618120375
+  ],
+  "test_retest": [
+   0.8363091497528451,
+   0.933392197241185
+  ],
+  "kept": [
+   0.8719325,
+   0.9345
+  ],
+  "robust_share_kept": [
+   0.46512133782959947,
+   0.6031688119696534
+  ],
+  "solve_rate_gain": [
+   0.03754165763122082,
+   0.11999530153104727
+  ]
+ },
+ "false_nr_p09": {
+  "10": 0.17505,
+  "20": 0.057625,
+  "40": 0.00155
+ },
+ "no_degradation_label_by_p0": {
+  "0.0": {
+   "robust": 1.0,
+   "dropped": 0.0
+  },
+  "0.1": {
+   "robust": 0.75035,
+   "dropped": 0.184575
+  },
+  "0.3": {
+   "robust": 0.4318,
+   "dropped": 0.237875
+  },
+  "0.5": {
+   "robust": 0.376475,
+   "dropped": 0.2106
+  },
+  "0.9": {
+   "robust": 0.5182,
+   "dropped": 0.3064
+  }
+ },
+ "rows": [
+  {
+   "oracle": 0.8881737064559795,
+   "test_retest": 0.8968168168168168,
+   "kept": 0.904975,
+   "robust_share_kept": 0.5427774247907401,
+   "solve_rate_gain": 0.08279234232989863,
+   "truly_degraded_all": 0.37485,
+   "truly_degraded_kept": 0.3897068979806072,
+   "truly_degraded_dropped": 0.2333596421994212,
+   "mean_p0_kept": 0.8552713937401586,
+   "mean_p0_dropped": 0.6417437629571165,
+   "oracle_on_truth_robust_share_all": 0.62515,
+   "setting": "base (scale 0.5, U(0.3,1), independent)"
+  },
+  {
+   "oracle": 0.8690921265554378,
+   "test_retest": 0.8758183931958636,
+   "kept": 0.89605,
+   "robust_share_kept": 0.6762178449863289,
+   "solve_rate_gain": 0.015875230176887523,
+   "truly_degraded_all": 0.207,
+   "truly_degraded_kept": 0.21792868701523352,
+   "truly_degraded_dropped": 0.1127946127946128,
+   "mean_p0_kept": 0.8553935099324815,
+   "mean_p0_dropped": 0.6623603783068783,
+   "oracle_on_truth_robust_share_all": 0.793,
+   "setting": "scale 0.25"
+  },
+  {
+   "oracle": 0.89720958280796,
+   "test_retest": 0.9083163821821291,
+   "kept": 0.91205,
+   "robust_share_kept": 0.4225919631599145,
+   "solve_rate_gain": -0.003755276574749278,
+   "truly_degraded_all": 0.51645,
+   "truly_degraded_kept": 0.5349761526232114,
+   "truly_degraded_dropped": 0.324332006822058,
+   "mean_p0_kept": 0.8524324614330354,
+   "mean_p0_dropped": 0.6416240483229106,
+   "oracle_on_truth_robust_share_all": 0.48355,
+   "setting": "scale 0.75"
+  },
+  {
+   "oracle": 0.9121116419683105,
+   "test_retest": 0.9207603773040643,
+   "kept": 0.926175,
+   "robust_share_kept": 0.3354117742327314,
+   "solve_rate_gain": -0.13007800901557487,
+   "truly_degraded_all": 0.629075,
+   "truly_degraded_kept": 0.6454773665883877,
+   "truly_degraded_dropped": 0.4232983406705046,
+   "mean_p0_kept": 0.8523319655572651,
+   "mean_p0_dropped": 0.6159745265831358,
+   "oracle_on_truth_robust_share_all": 0.370925,
+   "setting": "scale 1.0"
+  },
+  {
+   "oracle": 0.865327422703552,
+   "test_retest": 0.8730227385071676,
+   "kept": 0.89105,
+   "robust_share_kept": 0.5691319230121766,
+   "solve_rate_gain": 0.06935637730767075,
+   "truly_degraded_all": 0.3755,
+   "truly_degraded_kept": 0.38202121093092417,
+   "truly_degraded_dropped": 0.3221661312528683,
+   "mean_p0_kept": 0.851053572947646,
+   "mean_p0_dropped": 0.6881274412574576,
+   "oracle_on_truth_robust_share_all": 0.65015,
+   "setting": "drop U(0.1,1)"
+  },
+  {
+   "oracle": 0.8916000981488045,
+   "test_retest": 0.9030915750915751,
+   "kept": 0.916975,
+   "robust_share_kept": 0.5259685378554486,
+   "solve_rate_gain": 0.09250524823468476,
+   "truly_degraded_all": 0.37795,
+   "truly_degraded_kept": 0.3984023555713078,
+   "truly_degraded_dropped": 0.15206263173742848,
+   "mean_p0_kept": 0.853344167752665,
+   "mean_p0_dropped": 0.6119151475459199,
+   "oracle_on_truth_robust_share_all": 0.62205,
+   "setting": "drop U(0.5,1)"
+  },
+  {
+   "oracle": 0.8749895569355872,
+   "test_retest": 0.8855311911559254,
+   "kept": 0.897725,
+   "robust_share_kept": 0.6263610793951377,
+   "solve_rate_gain": 0.03921022584867295,
+   "truly_degraded_all": 0.2608,
+   "truly_degraded_kept": 0.27564120415494725,
+   "truly_degraded_dropped": 0.13053043265705205,
+   "mean_p0_kept": 0.8567612860842686,
+   "mean_p0_dropped": 0.6494121478856025,
+   "oracle_on_truth_robust_share_all": 0.7392,
+   "setting": "correlated families (copula rho 0.5)"
+  },
+  {
+   "oracle": 0.873922864552832,
+   "test_retest": 0.8824317330816768,
+   "kept": 0.896475,
+   "robust_share_kept": 0.6381940377590005,
+   "solve_rate_gain": 0.035667475389720815,
+   "truly_degraded_all": 0.253475,
+   "truly_degraded_kept": 0.2655679187930506,
+   "truly_degraded_dropped": 0.148756339048539,
+   "mean_p0_kept": 0.8574271928107309,
+   "mean_p0_dropped": 0.6641669251388553,
+   "oracle_on_truth_robust_share_all": 0.746525,
+   "setting": "6 families (no expert_no_solution)"
+  }
+ ]
+}

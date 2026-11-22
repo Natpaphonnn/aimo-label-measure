@@ -1,0 +1,262 @@
+{
+ "blocks": [
+  {
+   "model": "Qwen/Qwen3.5-4B",
+   "cut": 3072,
+   "records": [
+    {
+     "file": "runs/pilot/qwen_amc_s01_cut3072.jsonl",
+     "produced_on": "Mac (Apple M-series, bf16)",
+     "script": "src/selflabel/ (gen_mlx.py, force_at_cuts.py) and src/features/trace_states.py; see tools/supplementary_README.md"
+    }
+   ],
+   "states": [
+    {
+     "file": "runs/pilot/qwen_pilot_states.npz",
+     "produced_on": "Mac (Apple M-series, bf16)",
+     "script": "src/selflabel/ (gen_mlx.py, force_at_cuts.py) and src/features/trace_states.py; see tools/supplementary_README.md"
+    }
+   ],
+   "cuts_file": "runs/pilot/qwen_pilot.cuts.jsonl"
+  },
+  {
+   "model": "Qwen/Qwen3.5-4B",
+   "cut": 3072,
+   "records": [
+    {
+     "file": "runs/pilot/qwen_amc_rest_cut3072.jsonl",
+     "produced_on": "Mac (Apple M-series, bf16)",
+     "script": "src/selflabel/ (gen_mlx.py, force_at_cuts.py) and src/features/trace_states.py; see tools/supplementary_README.md"
+    }
+   ],
+   "states": [
+    {
+     "file": "runs/pilot/qwen_rest_states.npz",
+     "produced_on": "Mac (Apple M-series, bf16)",
+     "script": "src/selflabel/ (gen_mlx.py, force_at_cuts.py) and src/features/trace_states.py; see tools/supplementary_README.md"
+    }
+   ],
+   "cuts_file": "runs/pilot/qwen_rest.cuts.jsonl"
+  },
+  {
+   "model": "Qwen/Qwen3.5-4B",
+   "cut": 3072,
+   "records": [
+    {
+     "file": "runs/gen/Qwen_Qwen3.5-4B/tt_wave_3072.jsonl",
+     "produced_on": "Mac (Apple M-series, bf16)",
+     "script": "src/selflabel/ (gen_mlx.py, force_at_cuts.py) and src/features/trace_states.py; see tools/supplementary_README.md"
+    },
+    {
+     "file": "runs/kaggle/kx-tt-qwen-rest/output/kx-tt-qwen-rest.jsonl",
+     "kaggle_kernel": "kx-tt-qwen-rest",
+     "gpu": "Kaggle T4 (fp16)",
+     "generation": {
+      "model": "Qwen/Qwen3.5-4B",
+      "max_tokens": 3072,
+      "backend": "hf",
+      "dtype": "float16",
+      "seed": 20261015,
+      "out_name": "kx-tt-qwen-rest.jsonl",
+      "system_prompt": "You are a precise math problem solver. Solve the given problem step by step, then output your final answer on the last line in the exact format:\nANSWER: <your answer>\nThis result should be an integer value or NaN if the given problem does not have a solution.",
+      "force_suffix": "\n</think>\n\nTime is up. Based on the reasoning so far, the final answer in the required format is:\nANSWER:",
+      "force_tokens": 16,
+      "vllm_spec": "vllm"
+     },
+     "command": "python tools/kaggle_push_gen.py --model Qwen/Qwen3.5-4B --problems <pool file> --max-tokens 3072 --backend hf --dtype float16 --seed 20261015 --slug kx-tt-qwen-rest --push"
+    }
+   ],
+   "states": [
+    {
+     "file": "runs/features/Qwen_Qwen3.5-4B/tt_wave_states.npz",
+     "produced_on": "Mac (Apple M-series, bf16)",
+     "script": "src/selflabel/ (gen_mlx.py, force_at_cuts.py) and src/features/trace_states.py; see tools/supplementary_README.md"
+    },
+    {
+     "file": "runs/kaggle/kx-states-tt-qwen-rest/output/qwen_tt_rest_states.npz",
+     "kaggle_kernel": "kx-states-tt-qwen-rest",
+     "gpu": "Kaggle T4 (fp16)",
+     "states_job_env": {
+      "MODEL": "Qwen/Qwen3.5-4B",
+      "RECORDS": "/kaggle/input/**/kx-tt-qwen-rest.jsonl,runs/overlap/qwen_tt_overlap24.jsonl",
+      "PROBLEMS": "data/pool/tt_wave_problems.jsonl",
+      "CUTS": "3072",
+      "TAG": "qwen_tt_rest",
+      "SKIP_CUTS": "1",
+      "PARALLEL": "0"
+     },
+     "command": "python tools/kaggle_pack.py ... (runs kaggle/jobs/states_cuts_job.py with env {\"MODEL\": \"Qwen/Qwen3.5-4B\", \"RECORDS\": \"/kaggle/input/**/kx-tt-qwen-rest.jsonl,runs/overlap/qwen_tt_overlap24.jsonl\", \"PROBLEMS\": \"data/pool/tt_wave_problems.jsonl\", \"CUTS\": \"3072\", \"TAG\": \"qwen_tt_rest\", \"SKIP_CUTS\": \"1\", \"PARALLEL\": \"0\"})"
+    }
+   ],
+   "cuts_file": null
+  },
+  {
+   "model": "Skywork/Skywork-OR1-Math-7B",
+   "cut": 3072,
+   "records": [
+    {
+     "file": "runs/kaggle/kx-gen-skywork-amc/output/kx-gen-skywork-amc.jsonl",
+     "kaggle_kernel": "kx-gen-skywork-amc",
+     "gpu": "Kaggle T4 (fp16)",
+     "generation": {
+      "model": "Skywork/Skywork-OR1-Math-7B",
+      "max_tokens": 8192,
+      "backend": "vllm",
+      "dtype": "float16",
+      "seed": 20261015,
+      "out_name": "kx-gen-skywork-amc.jsonl",
+      "system_prompt": "You are a precise math problem solver. Solve the given problem step by step, then output your final answer on the last line in the exact format:\nANSWER: <your answer>\nThis result should be an integer value or NaN if the given problem does not have a solution.",
+      "force_suffix": "\n</think>\n\nTime is up. Based on the reasoning so far, the final answer in the required format is:\nANSWER:",
+      "force_tokens": 16,
+      "vllm_spec": "vllm==0.10.2 \"transformers<5\""
+     },
+     "command": "python tools/kaggle_push_gen.py --model Skywork/Skywork-OR1-Math-7B --problems <pool file> --max-tokens 8192 --backend vllm --dtype float16 --seed 20261015 --slug kx-gen-skywork-amc --push"
+    }
+   ],
+   "states": [
+    {
+     "file": "runs/kaggle/kx-states-skywork-amc/output/skywork_amc_states.npz",
+     "kaggle_kernel": "kx-states-skywork-amc",
+     "gpu": "Kaggle T4 (fp16)",
+     "states_job_env": {
+      "MODEL": "Skywork/Skywork-OR1-Math-7B",
+      "RECORDS": "/kaggle/input/**/kx-gen-skywork-amc.jsonl",
+      "PROBLEMS": "data/pool/night2_qwen35_amc.jsonl",
+      "CUTS": "2048 3072",
+      "TAG": "skywork_amc",
+      "SKIP_CUTS": "0",
+      "PARALLEL": "0"
+     },
+     "command": "python tools/kaggle_pack.py ... (runs kaggle/jobs/states_cuts_job.py with env {\"MODEL\": \"Skywork/Skywork-OR1-Math-7B\", \"RECORDS\": \"/kaggle/input/**/kx-gen-skywork-amc.jsonl\", \"PROBLEMS\": \"data/pool/night2_qwen35_amc.jsonl\", \"CUTS\": \"2048 3072\", \"TAG\": \"skywork_amc\", \"SKIP_CUTS\": \"0\", \"PARALLEL\": \"0\"})"
+    }
+   ],
+   "cuts_file": "runs/kaggle/kx-states-skywork-amc/output/skywork_amc.cuts.jsonl"
+  },
+  {
+   "model": "Skywork/Skywork-OR1-Math-7B",
+   "cut": 3072,
+   "records": [
+    {
+     "file": "runs/kaggle/kx-tt-skywork/output/kx-tt-skywork.jsonl",
+     "kaggle_kernel": "kx-tt-skywork",
+     "gpu": "Kaggle T4 (fp16)",
+     "generation": {
+      "model": "Skywork/Skywork-OR1-Math-7B",
+      "max_tokens": 3072,
+      "backend": "vllm",
+      "dtype": "float16",
+      "seed": 20261015,
+      "out_name": "kx-tt-skywork.jsonl",
+      "system_prompt": "You are a precise math problem solver. Solve the given problem step by step, then output your final answer on the last line in the exact format:\nANSWER: <your answer>\nThis result should be an integer value or NaN if the given problem does not have a solution.",
+      "force_suffix": "\n</think>\n\nTime is up. Based on the reasoning so far, the final answer in the required format is:\nANSWER:",
+      "force_tokens": 16,
+      "vllm_spec": "vllm==0.10.2 \"transformers<5\""
+     },
+     "command": "python tools/kaggle_push_gen.py --model Skywork/Skywork-OR1-Math-7B --problems <pool file> --max-tokens 3072 --backend vllm --dtype float16 --seed 20261015 --slug kx-tt-skywork --push"
+    }
+   ],
+   "states": [
+    {
+     "file": "runs/kaggle/kx-states-tt-skywork/output/skywork_tt_states.npz",
+     "kaggle_kernel": "kx-states-tt-skywork",
+     "gpu": "Kaggle T4 (fp16)",
+     "states_job_env": {
+      "MODEL": "Skywork/Skywork-OR1-Math-7B",
+      "RECORDS": "/kaggle/input/**/kx-tt-skywork.jsonl,/kaggle/input/**/kx-tt-skywork.part1.jsonl",
+      "PROBLEMS": "data/pool/tt_wave_problems.jsonl",
+      "CUTS": "3072",
+      "TAG": "skywork_tt",
+      "SKIP_CUTS": "1",
+      "PARALLEL": "0"
+     },
+     "command": "python tools/kaggle_pack.py ... (runs kaggle/jobs/states_cuts_job.py with env {\"MODEL\": \"Skywork/Skywork-OR1-Math-7B\", \"RECORDS\": \"/kaggle/input/**/kx-tt-skywork.jsonl,/kaggle/input/**/kx-tt-skywork.part1.jsonl\", \"PROBLEMS\": \"data/pool/tt_wave_problems.jsonl\", \"CUTS\": \"3072\", \"TAG\": \"skywork_tt\", \"SKIP_CUTS\": \"1\", \"PARALLEL\": \"0\"})"
+    }
+   ],
+   "cuts_file": null
+  },
+  {
+   "model": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+   "cut": 2560,
+   "records": [
+    {
+     "file": "runs/kaggle/kx-gen-deepseek-amc/output/kx-gen-deepseek-amc.jsonl",
+     "kaggle_kernel": "kx-gen-deepseek-amc",
+     "gpu": "Kaggle T4 (fp16)",
+     "generation": {
+      "model": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "max_tokens": 8192,
+      "backend": "vllm",
+      "dtype": "float16",
+      "seed": 20261015,
+      "out_name": "kx-gen-deepseek-amc.jsonl",
+      "system_prompt": "You are a precise math problem solver. Solve the given problem step by step, then output your final answer on the last line in the exact format:\nANSWER: <your answer>\nThis result should be an integer value or NaN if the given problem does not have a solution.",
+      "force_suffix": "\n</think>\n\nTime is up. Based on the reasoning so far, the final answer in the required format is:\nANSWER:",
+      "force_tokens": 16,
+      "vllm_spec": "vllm==0.10.2 \"transformers<5\""
+     },
+     "command": "python tools/kaggle_push_gen.py --model deepseek-ai/DeepSeek-R1-0528-Qwen3-8B --problems <pool file> --max-tokens 8192 --backend vllm --dtype float16 --seed 20261015 --slug kx-gen-deepseek-amc --push"
+    }
+   ],
+   "states": [
+    {
+     "file": "runs/kaggle/kx-states-deepseek-amc/output/deepseek_amc_states.npz",
+     "kaggle_kernel": "kx-states-deepseek-amc",
+     "gpu": "Kaggle T4 (fp16)",
+     "states_job_env": {
+      "MODEL": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "RECORDS": "/kaggle/input/**/kx-gen-deepseek-amc.jsonl",
+      "PROBLEMS": "data/pool/night2_qwen35_amc.jsonl",
+      "CUTS": "2048 2560",
+      "TAG": "deepseek_amc",
+      "SKIP_CUTS": "0",
+      "PARALLEL": "0"
+     },
+     "command": "python tools/kaggle_pack.py ... (runs kaggle/jobs/states_cuts_job.py with env {\"MODEL\": \"deepseek-ai/DeepSeek-R1-0528-Qwen3-8B\", \"RECORDS\": \"/kaggle/input/**/kx-gen-deepseek-amc.jsonl\", \"PROBLEMS\": \"data/pool/night2_qwen35_amc.jsonl\", \"CUTS\": \"2048 2560\", \"TAG\": \"deepseek_amc\", \"SKIP_CUTS\": \"0\", \"PARALLEL\": \"0\"})"
+    }
+   ],
+   "cuts_file": "runs/kaggle/kx-states-deepseek-amc/output/deepseek_amc.cuts.jsonl"
+  },
+  {
+   "model": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+   "cut": 2560,
+   "records": [
+    {
+     "file": "runs/kaggle/kx-tt-deepseek/output/kx-tt-deepseek.jsonl",
+     "kaggle_kernel": "kx-tt-deepseek",
+     "gpu": "Kaggle T4 (fp16)",
+     "generation": {
+      "model": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "max_tokens": 2560,
+      "backend": "vllm",
+      "dtype": "float16",
+      "seed": 20261015,
+      "out_name": "kx-tt-deepseek.jsonl",
+      "system_prompt": "You are a precise math problem solver. Solve the given problem step by step, then output your final answer on the last line in the exact format:\nANSWER: <your answer>\nThis result should be an integer value or NaN if the given problem does not have a solution.",
+      "force_suffix": "\n</think>\n\nTime is up. Based on the reasoning so far, the final answer in the required format is:\nANSWER:",
+      "force_tokens": 16,
+      "vllm_spec": "vllm==0.10.2 \"transformers<5\""
+     },
+     "command": "python tools/kaggle_push_gen.py --model deepseek-ai/DeepSeek-R1-0528-Qwen3-8B --problems <pool file> --max-tokens 2560 --backend vllm --dtype float16 --seed 20261015 --slug kx-tt-deepseek --push"
+    }
+   ],
+   "states": [
+    {
+     "file": "runs/kaggle/kx-states-tt-deepseek/output/deepseek_tt_states.npz",
+     "kaggle_kernel": "kx-states-tt-deepseek",
+     "gpu": "Kaggle T4 (fp16)",
+     "states_job_env": {
+      "MODEL": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "RECORDS": "/kaggle/input/**/kx-tt-deepseek.jsonl,/kaggle/input/**/kx-tt-deepseek.part1.jsonl",
+      "PROBLEMS": "data/pool/tt_wave_problems.jsonl",
+      "CUTS": "2560",
+      "TAG": "deepseek_tt",
+      "SKIP_CUTS": "1",
+      "PARALLEL": "0"
+     },
+     "command": "python tools/kaggle_pack.py ... (runs kaggle/jobs/states_cuts_job.py with env {\"MODEL\": \"deepseek-ai/DeepSeek-R1-0528-Qwen3-8B\", \"RECORDS\": \"/kaggle/input/**/kx-tt-deepseek.jsonl,/kaggle/input/**/kx-tt-deepseek.part1.jsonl\", \"PROBLEMS\": \"data/pool/tt_wave_problems.jsonl\", \"CUTS\": \"2560\", \"TAG\": \"deepseek_tt\", \"SKIP_CUTS\": \"1\", \"PARALLEL\": \"0\"})"
+    }
+   ],
+   "cuts_file": null
+  }
+ ]
+}

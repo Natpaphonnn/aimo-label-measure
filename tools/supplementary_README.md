@@ -1,7 +1,8 @@
-# Code for "What Can the AIMO Robustness Labels Measure?" (anonymized supplementary material)
+# Code for "What Can the AIMO Robustness Labels Measure?" (AIMO Interpretability Challenge, NeurIPS 2026 Workshop)
 
-Open-source licence: MIT (`LICENSE`). Anonymized mirror: https://anonymous.4open.science/r/aimo-label-measure ; the public
-GitHub repository will be released after review.
+Open-source licence: MIT (`LICENSE`). This tree is the public code repository linked from the paper; the same tree
+was reviewed through the anonymous mirror https://anonymous.4open.science/r/aimo-label-measure, so user names, home paths and
+Kaggle kernel slugs are placeholders (`<kaggle-user>`, `kx-*`).
 
 ## Install (Python 3.12)
 
@@ -17,9 +18,30 @@ python -m unittest discover -s tests -v                     # tests that need th
 | report | command | needs |
 |---|---|---|
 | Sec 2 label simulation, Fig 1 right | `python analysis/label_noise_ceiling.py` | nothing |
-| Sec 6 recommendations, App C | `python analysis/label_budget.py` | nothing |
+| Sec 6 recommendations, App D | `python analysis/label_budget.py` | nothing |
 | Figures 1-2 | `python analysis/make_figures.py --tag v3` | shipped `notes/results/*_v3.json` |
 | stage-2 labels | `python tools/fetch_hf_public.py && python tools/build_case_labels.py` | network (public Hugging Face datasets, no token); shipped `data/seed/` |
+
+## Revision of the report (conditional accept of #21): tables from the shipped cache
+
+`notes/results/cache/` holds what the stage-2 tables need, so they rebuild without residual states or a GPU:
+`samples.csv.gz` (every sample: model, problem id, sample index, extracted answer, gold correctness, tokens generated, cut,
+finished before the cut), `../stage1_nested_scores.csv.gz` (the nested stage-1 score of every sample in every outer fold and
+seed, role outer_test / outer_train), `cases_158.csv` / `cases_139.csv` (the case sets with their sample IDs and labels) and
+`regeneration.json` (for every input file of `analysis/run_wb.py`: the Kaggle kernel or laptop run that produced it, with
+model, token cap, backend, dtype, seed and samples per problem, and the state-extraction settings). Problem IDs are sha256
+prefixes of the problem text.
+
+| report | command | needs |
+|---|---|---|
+| Table 1, Table 3 (App B), per-class recall (App C), Fig 2a | `python analysis/wb_nested.py --from-cache` | shipped cache + labels (`tools/fetch_hf_public.py && tools/build_case_labels.py`) |
+| Sec 2 sensitivity of the simulation, App E | `python analysis/label_sensitivity.py` | `tools/fetch_hf_public.py` (sample-full) |
+| Sec 5 band rules, official labels, solve-rate-matched comparison, Fig 2b | `python analysis/label_decomp_revision.py` | shipped cache + `data/seed/` + labels |
+| Sec 5 stage 1 inside finished / truncated samples | `python analysis/stage1_finished_truncated.py` | states (not shipped) |
+| Sec 4 precision parity (bf16 vs fp16) | `python analysis/precision_parity.py` | states (not shipped) |
+| nested stage 1 itself (writes the cache) | `python analysis/wb_nested.py [--probe-subset truncated] --jobs 3` | states (not shipped) |
+
+The analyses were pre-registered before they were run: `decision_log/PREREG_REVISION_2026-11-22.md`.
 
 ## What needs the logged generations (not shipped)
 
@@ -29,10 +51,10 @@ that says what the file is and where it comes from (`analysis/datapaths.py`). Th
 
 | report | script | output in notes/results/ |
 |---|---|---|
-| Sec 5 stage 1 + stage 2, Table 1, Holm over the primary family | `analysis/run_wb.py --tag v3` | wb_two_stage_v3.{md,json} |
-| Sec 5 balanced accuracy, Fig 2a | `analysis/wb_balanced.py --tag v3` | wb_balanced_v3.{md,json} |
-| Sec 5 layers, controls, transfer, label decomposition, Fig 1 left, Fig 2b | `analysis/wb_diagnostics.py --tag v3` | wb_diagnostics_v3.{md,json} |
-| Sec 5 white-box ablation, App B | `analysis/wb_vs_offsets.py` | wb_vs_offsets_v3.md |
+| Sec 5 stage 1 (AUCs, layers); submitted version's stage 2 (before nesting) | `analysis/run_wb.py --tag v3` | wb_two_stage_v3.{md,json} |
+| submitted version's balanced accuracy (before nesting) | `analysis/wb_balanced.py --tag v3` | wb_balanced_v3.{md,json} |
+| Sec 5 layers, controls, transfer, Fig 1 left | `analysis/wb_diagnostics.py --tag v3` | wb_diagnostics_v3.{md,json} |
+| (submitted version, before nesting) white-box ablation | `analysis/wb_vs_offsets.py` | wb_vs_offsets_v3.md |
 | Sec 5 validation board, runtime, App A | `analysis/parse_val_logs.py`, `analysis/runtime_table.py` (server logs) | val_board_v1.md, runtime_val.md |
 
 ## Exploratory scripts

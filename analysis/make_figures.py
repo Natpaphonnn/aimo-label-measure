@@ -3,8 +3,8 @@
 
 Fig. 1  label instrument: P(sampled label = non-robust | no true degradation) vs true solve probability (analysis/label_noise_ceiling.py protocol).
 Fig. 2  stage-1 probe AUC by layer and state kind, per model, with 8-sample agreement (notes/results/wb_diagnostics_<tag>.json).
-Fig. 3  (a) balanced accuracy of stage 2 by K (wb, bb; prior = 0.5; wb_balanced_<tag>.json); (b) pooled AUC for the robustness label of solve-rate-type predictors
-        (notes/results/wb_two_stage_<tag>.json, wb_diagnostics_<tag>.json).
+Fig. 3  (a) balanced accuracy of stage 2 by K, nested CV (wb, bb, offsets; prior = 0.5; notes/results/wb_nested.json); (b) AUC of solve-rate-type
+        predictors for the robustness label, monotone and band |x - 0.5|, with 95% CIs (notes/results/label_decomp_revision.json).
 Usage: python analysis/make_figures.py --tag v2
 """
 import argparse, json, pathlib
@@ -61,22 +61,27 @@ def fig2(tag: str) -> None:
 
 
 def fig3(tag: str) -> None:
-    bal = json.loads((ROOT / f"notes/results/wb_balanced_{tag}.json").read_text())["results"]["correct"]
-    e = json.loads((ROOT / f"notes/results/wb_diagnostics_{tag}.json").read_text())["label_decomposition"]["rows"]
+    # revision of #21: (a) from the nested run (analysis/wb_nested.py), (b) from analysis/label_decomp_revision.py
+    need(ROOT / "notes/results/wb_nested.json", ROOT / "notes/results/label_decomp_revision.json")
+    bal = json.loads((ROOT / "notes/results/wb_nested.json").read_text())["per_K"]
+    e = json.loads((ROOT / "notes/results/label_decomp_revision.json").read_text())["auc"]
     fig, (a, b) = plt.subplots(1, 2, figsize=(6.8, 2.2), gridspec_kw={"width_ratios": [1, 1.25]})
     ks = sorted(bal, key=lambda k: int(k[1:])); x = [int(k[1:]) for k in ks]
-    for arm, col, lab in [("wb", C["blue"], "white-box (probe)"), ("bb", C["orange"], "black-box (agreement)")]:
-        a.plot(x, [bal[k][arm] for k in ks], color=col, marker="o", label=lab)
+    for arm, col, lab in [("wb", C["blue"], "white-box (probe)"), ("bb", C["orange"], "black-box (agreement)"), ("offsets", C["prior"], "per-model offsets")]:
+        a.plot(x, [bal[k]["arms"][f"{arm}_bal"]["bacc"] for k in ks], color=col, marker="o", label=lab, ls="-" if arm != "offsets" else (0, (1, 1.5)))
     a.axhline(0.5, color=C["prior"], lw=1.2, ls=(0, (3, 2))); a.text(8, 0.505, "majority class", color=C["ink2"], ha="right", va="bottom", fontsize=7)
     a.set_xscale("log", base=2); a.set_xticks(x, [str(v) for v in x]); a.set_xlabel("samples per case K")
-    a.set_ylabel("balanced accuracy (CV)"); a.set_ylim(0.40, 0.7); a.legend(fontsize=7, loc="lower left"); a.set_title("(a) stage 2 under a balanced label mix", fontsize=8, loc="left")
-    names = [("base", "labellers' base acc. (8k)"), ("solve_cut", "solve rate at our cut"), ("twin_mean", "agreement (8 samples)"), ("probe_mean", "probe mean (white-box)")]
+    a.set_ylabel("balanced accuracy (nested CV)"); a.set_ylim(0.40, 0.7); a.legend(fontsize=6.5, loc="lower left"); a.set_title("(a) stage 2 under a balanced label mix", fontsize=8, loc="left")
+    names = [("base", "labellers' base acc. (8k)"), ("solve", "solve rate at our cut"), ("twin_mean", "agreement (8 samples)"), ("wb_mean", "probe mean (white-box)")]
     y = np.arange(len(names))
     for i, (k, lab) in enumerate(names):
-        v = e[k]["pooled_auc"]; b.plot([0.5, v], [i, i], color=C["grid"], lw=2, solid_capstyle="round"); b.plot([v], [i], "o", color=C["blue"], ms=6)
-        b.text(v + 0.01, i, f"{v:.2f}", va="center", color=C["ink"], fontsize=7)
-    b.axvline(0.5, color=C["ink2"], lw=0.8); b.set_yticks(y, [l for _, l in names]); b.set_xlim(0.45, 0.75); b.grid(axis="y", visible=False)
-    b.set_xlabel("pooled AUC for the robustness label (0.5 = chance)"); b.set_title("(b) what predicts the label", fontsize=8, loc="left")
+        r = e[f"byeolki|{k}"]   # byeolki-protocol labels (R-S1); official cases are reported in the text
+        for v, ci, col, dy, mk in ((r["auc"], r["ci"], C["blue"], 0.14, "o"), (r["band_auc"], r["band_ci"], C["orange"], -0.14, "s")):
+            b.plot(ci, [i + dy] * 2, color=col, lw=1.2, alpha=0.6); b.plot([v], [i + dy], mk, color=col, ms=5)
+            b.text(ci[1] + 0.01, i + dy, f"{v:.2f}", va="center", color=C["ink"], fontsize=6.5)
+    b.plot([], [], "o", color=C["blue"], label="monotone x"); b.plot([], [], "s", color=C["orange"], label="band |x-0.5|"); b.legend(fontsize=6.5, loc="lower center", ncol=2)
+    b.axvline(0.5, color=C["ink2"], lw=0.8); b.set_yticks(y, [l for _, l in names]); b.set_xlim(0.3, 0.9); b.set_ylim(-1.1, len(names) - 0.5); b.grid(axis="y", visible=False)
+    b.set_xlabel("AUC for the robustness label, 95% CI (0.5 = chance)"); b.set_title("(b) what predicts the label", fontsize=8, loc="left")
     fig.tight_layout(); fig.savefig(OUT / "fig_label_eff_decomp.pdf"); plt.close(fig)
 
 

@@ -408,3 +408,10 @@ report states which ones are nominated. the author nominates wb-K4 in both track
 prior (Main 991595, Small 991597) stays in the report as a baseline, not nominated. #52 (two per track) was recorded before any
 board score; this narrowing was made after the official validation scores were known (wb 0.524/0.571 vs prior 0.476/0.500), and
 the report says so by listing both. 1011261 remains the Main mirror whatever 1009697 scores (#52 pre-commitment).
+#55 addendum (the author, 2026-11-01): no further uploads to Codabench; the nomination is locked at Main 1011261 / Small 1009859.
+Never post the OpenReview submission number or Codabench IDs in a public channel (double-blind); if identity has to be shown,
+use a DM or e-mail to the organizers.
+
+### 56. Revision analyses pre-registered (2026-11-22, before running): notes/PREREG_REVISION_2026-11-22.md
+Conditional accept of #21 (notes/REVIEWS_SUB21_2026-11-21.md). Nested stage 1 inside outer stage-2 folds (P1), probe vs base
+solvability (P2), two-sided solve-rate rules and official labels (P3), simulation sensitivity (P4), bf16/fp16 parity (P5).
