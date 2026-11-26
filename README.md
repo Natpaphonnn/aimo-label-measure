@@ -4,6 +4,18 @@ Open-source licence: MIT (`LICENSE`). This tree is the public code repository li
 was reviewed through the anonymous mirror https://anonymous.4open.science/r/aimo-label-measure, so user names, home paths and
 Kaggle kernel slugs are placeholders (`<kaggle-user>`, `kx-*`).
 
+## Headline results (revised report)
+
+With both stages nested in held-out folds on 158 labelled cases (balanced stage 2, K = 4; Table 1):
+
+- the probe adds **+7.4 points** of balanced accuracy over stage 2 with per-model offsets only (wb 0.623 vs 0.549),
+  **not significant** (every per-seed 95% CI includes 0, p = 0.08-0.27);
+- answer agreement beats the probe by **3.4 points** (bb 0.657), **not significant** (p = 0.40-0.57); neither beats the
+  majority class in plain accuracy.
+
+Label simulation (Sec 2, App E): a simulated oracle that knows every true degradation agrees with the sampled labels about
+**0.89** of the time (**0.87-0.91** across the sensitivity grid), under the stated assumptions.
+
 ## Install (Python 3.12)
 
 ```bash
